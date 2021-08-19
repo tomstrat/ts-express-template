@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tickets_1 = require("../controllers/tickets");
+const middleware_1 = require("./middleware");
+const router = express_1.Router();
+router.post("/", tickets_1.createTicket);
+router.get("/", tickets_1.getTickets);
+router.get("/:id", middleware_1.checkTicketExists, tickets_1.getTicket);
+router.patch("/:id", middleware_1.checkTicketExists, tickets_1.updateTicket);
+router.delete("/:id", middleware_1.checkTicketExists, tickets_1.deleteTicket);
+exports.default = router;

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+find ./src -type f | xargs sed -i  "s/template/$1/g"
+find ./src -type f | xargs sed -i  "s/Template/${1^}/g"
+
+find ./src -name "*.ts" | sed -e "p;s/template/$1/" | xargs -n2 mv
+find ./src -name "*.ts" | sed -e "p;s/Template/${1^}/" | xargs -n2 mv
